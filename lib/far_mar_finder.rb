@@ -1,10 +1,28 @@
 require 'csv'
 require 'time'
-require_relative 'market'
+require './lib/market' # originally require_relative 'market', which obviates the need to hard code the file path name
+require_relative 'products'
+require_relative 'vendor'
+require_relative 'sale'
 
 
-# ... Require all of the supporting classes
 
 class FarMarFinder
-  # Your code goes here
+  
+  def markets
+  end
+  
+  def vendors
+  end
+
+  def products
+  end
+
+  def sales
+  end
+  
 end
+
+
+
+
