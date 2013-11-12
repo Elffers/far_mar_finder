@@ -41,6 +41,13 @@ class Vendor
       market.id.to_i == @market_id.to_i
     end
   end
+  
+  def products
+    Product.all.find_all do |product|
+      product.vendor_id.to_i == @id.to_i
+    end
+  end
+
 
 
 # **Additional Market Methods**
@@ -50,8 +57,8 @@ class Vendor
 # **Additional Vendor Methods**
 
 # - `market` - returns the `Market` instance that is associated with this vendor using the `Vendor` `market_id` field
-# - `products` - returns a collection of `Product` instances that are associated with market by the `Product` `vendor_id` field.
-# - `sales` - returns a collection of `Sale` instances that are associated with market by the `vendor_id` field.
+# - `products` - returns a collection of `Product` instances that are associated with vendor by the `Product` `vendor_id` field.
+# - `sales` - returns a collection of `Sale` instances that are associated with sale by the `vendor_id` field.
 # - `revenue` - returns the the sum of all of the vendor's sales (in cents)
 
 end
