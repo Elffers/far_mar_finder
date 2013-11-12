@@ -23,7 +23,7 @@ describe Product do
       product_class.should respond_to :find
     end
     
-    it "responds to 'by_market'" do
+    it "responds to 'by_vendor'" do
       product_class.should respond_to :by_vendor
     end
     
