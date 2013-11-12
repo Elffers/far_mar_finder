@@ -52,7 +52,9 @@ class Market
 
 #returns a collection of `Vendor` instances that are associated with the market by the market_id field.
   def vendors
-
+    Vendor.all.find_all do |vendor|
+      vendor.market_id.to_i == @id.to_i
+    end
   end
 
 end # end class Market
