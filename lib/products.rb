@@ -13,11 +13,16 @@ attr_reader :id, :name, :vendor_id
     end
   end
 
-  def self.find_by_id(id)
+  def self.find(id)
     all.find do |product|
       product.id.to_i == id.to_i
     end
   end
+
+  # def self.find_by_market(name)
+  #   all.find do |product|
+  #     pro
+
 
   def self.find_by_name(name)
     all.find do |product|
