@@ -2,7 +2,7 @@ class Market
   attr_reader :id, :name, :address, :city, :county, :state, :zip
 
   def initialize(array)
-    @id       = array[0]
+    @id       = array[0].to_i
     @name     = array[1]
     @address  = array[2]
     @city     = array[3]

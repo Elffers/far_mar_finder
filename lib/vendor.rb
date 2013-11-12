@@ -2,10 +2,10 @@ class Vendor
   attr_reader :id, :name, :num_employees, :market_id
 
   def initialize(array)
-    @id             = array[0]
+    @id             = array[0].to_i
     @name           = array[1]
-    @num_employees  = array[2]
-    @market_id      = array[3]
+    @num_employees  = array[2].to_i
+    @market_id      = array[3].to_i
   end
 
   def self.all
