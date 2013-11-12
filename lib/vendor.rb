@@ -23,6 +23,7 @@ class Vendor
 #where X is an attribute, returns a single instance whose X attribute 
 #case-insensitive attribute matches the match parameter. For instance, 
 #Vendor.find_by_name("windler inc") could find a Vendor with the name attribute "windler inc" or "Windler Inc".
+
   def self.find_by_name(match)
     all.find do |vendor|
       vendor.name == match.to_s
