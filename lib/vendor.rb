@@ -36,6 +36,12 @@ class Vendor
     end
   end
 
+  def market
+    Market.all.find do |market|
+      market.id.to_i == @market_id.to_i
+    end
+  end
+
 
 # **Additional Market Methods**
     
