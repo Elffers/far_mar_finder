@@ -47,10 +47,5 @@ attr_reader :id, :name, :vendor_id
     sales.amount
   end
 
-# - `vendor` - returns the `Vendor` instance that is associated with this product using the `Product` `vendor_id` field
-# - `sales` - returns a collection of `Sale` instances that are associated with product using the `Sale` `product_id` field.
-# - `number_of_sales` - returns the number of times this product has been sold.
-
-
-end
+end #end of Product class
 

@@ -62,16 +62,5 @@ class Vendor
     puts sum
   end
 
+end #end of Vendor class
 
-# **Additional Market Methods**
-    
-# - `vendors` - returns a collection of `Vendor` instances that are associated with the market by the market_id field.
-
-# **Additional Vendor Methods**
-
-# - `market` - returns the `Market` instance that is associated with this vendor using the `Vendor` `market_id` field
-# - `products` - returns a collection of `Product` instances that are associated with vendor by the `Product` `vendor_id` field.
-# - `sales` - returns a collection of `Sale` instances that are associated with sale by the `vendor_id` field.
-# - `revenue` - returns the the sum of all of the vendor's sales (in cents)
-
-end
