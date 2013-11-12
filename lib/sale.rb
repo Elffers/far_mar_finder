@@ -3,7 +3,7 @@ class Sale
 
   def initialize(array)
     @id = array[0]
-    @amount = array[1]
+    @amount = array[1] #in cents
     @purchase_time = array[2]
     @vendor_id = array[3]
     @product_id = array[4]
@@ -34,6 +34,9 @@ class Sale
     end
   end
 
- 
+  
+#  - `vendor` - returns the `Vendor` instance that is associated with this sale using the `Sale` `vendor_id` field
+# - `product` - returns the `Product` instance that is associated with this sale using the `Sale` `product_id` field
+# - `self.between(beginning_time, end_time)` - returns a collection of Sale objects where the purchase time is between the two times given as arguments
 
 end #end class Sale

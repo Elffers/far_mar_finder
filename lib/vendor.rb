@@ -48,6 +48,19 @@ class Vendor
     end
   end
 
+  def sales 
+    Sale.all.find_all do |sale|
+      sale.vendor_id.to_i == @id.to_i
+    end
+  end
+  
+  def revenue
+    sum = 0
+    sales.each do |sale|
+      sum = sum + sale.amount.to_i
+    end
+    puts sum
+  end
 
 
 # **Additional Market Methods**
