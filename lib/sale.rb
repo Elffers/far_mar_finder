@@ -34,7 +34,18 @@ class Sale
     end
   end
 
-  
+  def vendor
+    Vendor.all.find do |vendor|
+      vendor.id.to_i == @vendor_id.to_i
+    end
+  end
+
+  def product
+    Product.all.find do |product|
+      product.id.to_i == @product_id.to_i
+    end
+  end
+
 #  - `vendor` - returns the `Vendor` instance that is associated with this sale using the `Sale` `vendor_id` field
 # - `product` - returns the `Product` instance that is associated with this sale using the `Sale` `product_id` field
 # - `self.between(beginning_time, end_time)` - returns a collection of Sale objects where the purchase time is between the two times given as arguments
