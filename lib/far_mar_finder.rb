@@ -27,19 +27,4 @@ class FarMarFinder
   
 end #end FarMarFinder
 
-# finder = FarMarFinder.new
-# finder.markets
-#  #=> Market
-# finder.vendors
-#  #=> Vendor
-# finder.products
-#  #=> Product
-# finder.sales
-#  #=> Sale
-# We will build class methods on the returned class Object
-
-# finder = FarMarFinder.new
-# finder.markets.all
-#  # => [...] Returns all instances of the Market class
-
 

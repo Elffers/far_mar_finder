@@ -49,4 +49,14 @@ class Market
     end
   end
 
+  #Extra Credit Method
+  def products
+    products = []
+    Vendor.by_market(@id).each do |vendor|
+      products = products + Product.by_vendor(vendor.id)
+    end
+    products
+  end
+
+
 end # end class Market
