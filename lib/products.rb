@@ -39,8 +39,8 @@ attr_reader :id, :name, :vendor_id
   end
 
   def sales 
-    Sale.all.find do |sale|
-      sale.id.to_i == @id.to_i
+    Sale.all.find_all do |sale|
+      sale.product_id.to_i == @id.to_i
     end
   end
 
