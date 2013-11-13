@@ -66,7 +66,7 @@ class Vendor
     sales.each do |sale|
       sum = sum + sale.amount.to_i
     end
-    puts sum
+    sum
   end
 
 end #end of Vendor class
