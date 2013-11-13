@@ -27,8 +27,8 @@ describe Product do
       product_class.should respond_to :find_by_vendor
     end
     
-    it "find the first product by market 1" do
-      product_class.by_vendor(1).first.name.should eq "Dry Beets"
+    it "find the first product by name 1" do
+      product_class.first.find_by_name.should eq "Dry Beets"
     end
   end
   
@@ -52,11 +52,11 @@ describe Product do
   describe "associations" do
     let(:product) { product_class.find(62) }
 
-    it "responds to :market" do
+    it "responds to :vendor" do
       product.should respond_to :vendor
     end
     
-    it "market_id matches the markets id" do
+    it "vendor_id matches the vendors id" do
       product.vendor.id.should eq product.vendor_id
     end
     
