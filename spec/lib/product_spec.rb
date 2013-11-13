@@ -28,7 +28,7 @@ describe Product do
     end
     
     it "find the first product by name 1" do
-      product_class.first.find_by_name.should eq "Dry Beets"
+      product_class.by_vendor(1).first.name.should eq "Dry Beets"
     end
   end
   

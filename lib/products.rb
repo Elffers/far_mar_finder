@@ -27,14 +27,14 @@ attr_reader :id, :name, :vendor_id
   end
 
   def self.by_vendor(vendor_id)
-    all.find do |product|
+    all.find_all do |product|
       product.vendor_id.to_i == vendor_id.to_i
     end
   end
 
   def vendor
     Vendor.all.find do |vendor|
-      vendor.id.to_i == @id.to_i
+      vendor.id.to_i == @vendor_id.to_i
     end
   end
 

@@ -31,7 +31,7 @@ class Vendor
   end
 
   def self.by_market(id)
-    all.find do |vendor|
+    all.find_all do |vendor|
       vendor.market_id == id.to_i
     end
   end
