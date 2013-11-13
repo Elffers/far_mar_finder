@@ -1,10 +1,10 @@
 class Vendor
-  attr_reader :id, :name, :num_employees, :market_id
+  attr_reader :id, :name, :no_of_employees, :market_id
 
   def initialize(array)
     @id             = array[0].to_i
     @name           = array[1]
-    @num_employees  = array[2].to_i
+    @no_of_employees = array[2].to_i
     @market_id      = array[3].to_i
   end
 
@@ -37,9 +37,9 @@ class Vendor
   end
   
   
-  def self.find_all_by_num_employees(match)
+  def self.by_no_of_employees(match)
     all.find_all do |vendor|
-      vendor.num_employees == match.to_s
+      vendor.no_of_employees == match.to_i
     end
   end
 
