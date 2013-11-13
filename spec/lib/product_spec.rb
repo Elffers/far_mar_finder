@@ -23,8 +23,8 @@ describe Product do
       product_class.should respond_to :find
     end
     
-    it "responds to 'find_by_vendor'" do
-      product_class.should respond_to :find_by_vendor
+    it "responds to 'by_vendor'" do
+      product_class.should respond_to :by_vendor
     end
     
     it "find the first product by name 1" do
@@ -44,7 +44,7 @@ describe Product do
       product.name.should eq "Black Apples"
     end
     
-    it "has the market_id 3" do
+    it "has the vendor id 5" do
       product.vendor_id.should eq 5
     end
   end
