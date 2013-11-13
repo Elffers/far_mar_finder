@@ -12,7 +12,7 @@ class Market
   end
 
   def self.all
-    CSV.read("./support/markets.csv").map do |array|
+    @answer ||= CSV.read("./support/markets.csv").map do |array|
       Market.new(array)
     end
   end
@@ -67,18 +67,18 @@ class Market
   end
 
   def prefered_vendor
-    # top_vendor = ''
-    # array = []
-    # vendors.each do |vendor|
-    #   array.push vendor.revenue
-    #   if vendor.revenue == array.max
-    #     top_vendor = vendor
-    #   end
-    # end
-    # puts array.max
-    # top_vendor
-  max_revenue = vendors.map {|vendor| vendor.revenue}.max
-  vendors.find_all {|vendor| vendor.revenue == max_revenue}
+    top_vendor = ''
+    array = []
+    vendors.each do |vendor|
+      array.push vendor.revenue
+      if vendor.revenue == array.max
+        top_vendor = vendor
+      end
+    end
+    puts array.max
+    top_vendor
+  # max_revenue = vendors.map {|vendor| vendor.revenue}.max
+  # vendors.find_all {|vendor| vendor.revenue == max_revenue}
   end
 
  

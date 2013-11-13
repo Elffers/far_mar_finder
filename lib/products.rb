@@ -8,7 +8,7 @@ attr_reader :id, :name, :vendor_id
   end
 
   def self.all
-    CSV.read("./support/products.csv").map do |array|
+    @answer ||= CSV.read("./support/products.csv").map do |array|
       Product.new(array)
     end
   end

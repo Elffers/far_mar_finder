@@ -9,7 +9,7 @@ class Vendor
   end
 
   def self.all
-    CSV.read("./support/vendors.csv").map do |array|
+    @answer ||= CSV.read("./support/vendors.csv").map do |array|
       Vendor.new(array)
     end
   end
