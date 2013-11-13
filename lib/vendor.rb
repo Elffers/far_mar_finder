@@ -29,6 +29,13 @@ class Vendor
       vendor.name == match.to_s
     end
   end
+
+  def self.by_market(id)
+    all.find do |vendor|
+      vendor.market_id == id.to_i
+    end
+  end
+  
   
   def self.find_all_by_num_employees(match)
     all.find_all do |vendor|
