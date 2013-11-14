@@ -87,11 +87,7 @@ See below for full description of methods to create.
 - `products` - returns a collection of `Product` instances that are associated with vendor by the `Product` `vendor_id` field.
 - `sales` - returns a collection of `Sale` instances that are associated with vendor by the `vendor_id` field.
 - `revenue` - returns the the sum of all of the vendor's sales (in cents)
-- `self.by_market(market_it)` - returns all of the vendors with the given `market_id`
-- `prefered_vendor` - returns the vendor with the highest revenue
-- `prefered_vendor(date)` - returns the vendor with the highest revenue for the given date
-- `worst_vendor` - returns the vendor with the lowest revenue
-- `worst_vendor(date)` - returns the vendor with the lowest revenue by date
+- `self.by_market(market_id)` - returns all of the vendors with the given `market_id`
 
 **Additional Product Methods**
 
@@ -115,6 +111,11 @@ See below for full description of methods to create.
 
 - `products` returns a collection of `Product` instances that are associated to the market through the `Vendor` class.
 - `self.search(search_term)` returns a collection of `Market` instances where the market name or vendor name contain the `search_term`. For example `Market.search('school')` would return 3 results, one being the market with id 75 (Fox School Farmers Market).
+- `prefered_vendor` - returns the vendor with the highest revenue
+- `prefered_vendor(date)` - returns the vendor with the highest revenue for the given date
+- `worst_vendor` - returns the vendor with the lowest revenue
+- `worst_vendor(date)` - returns the vendor with the lowest revenue on the given date
+
 
 **Extra Credit Vendor Methods**
 
