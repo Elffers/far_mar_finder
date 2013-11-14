@@ -49,13 +49,21 @@ attr_reader :id, :name, :vendor_id
   def number_of_sales
     sales.count
   end
-#my own methods
+
+# My own methods
 ## returns all dates the product was sold on
   def date
     sale_array = Sale.all.keep_if {|sale| sale.product_id.to_i == @id.to_i}
     sale_array.map {|sale| sale.purchase_time.to_date}
   end
 
+  def revenue
+    sum = 0
+    sales.each do |sale|
+      sum += sale.amount
+    end
+    sum
+  end
 
 
 #Extra credit method
@@ -70,6 +78,23 @@ attr_reader :id, :name, :vendor_id
     end
     puts date_hash.values.max
     date_hash.key(date_hash.values.max)
+  end
+
+#Returns top n products ranked by total revenue
+  def self.product_revenues
+    @product_array ||= all.map do |product|
+      product.revenue
+    end
+  end
+
+  def self.most_revenue(n)
+    index_array = product_revenues.sort.reverse.take(n).map do|revenue|
+      @product_array.index(revenue)
+    end
+    puts product_revenues.sort.reverse.take(n)
+    index_array.map do |index|
+      all[index]
+    end
   end
 
 
