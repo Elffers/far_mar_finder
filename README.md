@@ -1,6 +1,7 @@
 ##Authors
 
 - Hsing-Hui  Hsu
+- Anne Kimsey
 
 # FarMar Finder
 
