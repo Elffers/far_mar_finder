@@ -69,5 +69,43 @@ class Vendor
     sum
   end
 
+# Extra credit method
+  def self.vendor_revenues
+    @vendor_revenues ||= all.map do |vendor|
+      vendor.revenue
+    end
+  end
+
+  def self.most_revenue(n)
+  # # returns the top n vendor instances ranked by total revenue
+  #   index_array = vendor_revenues.sort.reverse.take(n).map do |revenue|
+  #     @vendor_revenues.index(revenue)
+  #   end
+  #   puts @vendor_revenues.sort.reverse.take(n)
+  #   index_array.map do |index|
+  #     all[index] 
+  #   end
+  # end
+    vendor_hash = {}
+    all.each do |vendor|
+      vendor_hash[vendor] = vendor.revenue
+    end
+    # vendor_hash.values.sort.reverse.take(n).map do |revenue|
+    #   vendor_hash.key(revenue)
+    # end
+    top_vendors = {}
+    revenue_array = []
+    vendor_hash.values.sort.reverse.take(n).each do |revenue|
+      if revenue_array.include? revenue
+        top_vendors[revenue].push vendor_hash.key(revenue)
+      else
+        top_vendors[revenue] = [vendor_hash.key(revenue)]
+        revenue_array.push revenue
+      end
+    end
+    top_vendors
+  end
+   
+
 end #end of Vendor class
 

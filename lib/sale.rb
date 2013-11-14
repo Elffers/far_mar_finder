@@ -60,6 +60,7 @@ class Sale
   end
 
 #Extra Credit method
+# Counts the number of sale instances per day and returns the day with the most sales
   def self.best_day
     date_hash = {}
     all.each do |sale|

@@ -80,16 +80,17 @@ attr_reader :id, :name, :vendor_id
     date_hash.key(date_hash.values.max)
   end
 
-#Returns top n products ranked by total revenue
+#Returns array of total revenue per product
   def self.product_revenues
-    @product_array ||= all.map do |product|
+    @product_revenues ||= all.map do |product|
       product.revenue
     end
   end
 
-  def self.most_revenue(n)
+#Returns top n products ranked by total revenue
+  def self.most_revenue(n) 
     index_array = product_revenues.sort.reverse.take(n).map do|revenue|
-      @product_array.index(revenue)
+      @product_revenues.index(revenue)
     end
     puts product_revenues.sort.reverse.take(n)
     index_array.map do |index|
