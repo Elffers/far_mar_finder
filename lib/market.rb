@@ -18,13 +18,16 @@ class Market
   end
 
   def self.find(id)
+    # Array -> market instance
+    # Returns the first instance of a market that matches the argument variable "id"
     all.find do |market|
       market.id.to_i == id.to_i
     end
   end
 
-  def self.find_by_state(match)
-    # param = attribute.downcase
+  def self.find_by_state(state)
+    # Array -> market instance
+    # Returns the first instance of a market whose attribute @state matches the argument variable "state"
     all.find do |market|
       market.state == match.to_s
     end
@@ -37,7 +40,7 @@ class Market
   #   end
   # end
 
-  def self.find_all_by_state(match)
+  def self.find_all_by_state(state)
     all.find_all do |market|
       market.state == match.to_s
     end
