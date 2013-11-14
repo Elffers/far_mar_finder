@@ -53,4 +53,26 @@ class Sale
     end
   end
 
+#returns collection of products sold on a particular day
+  def self.products_on_date(date)
+    all.keep_if {|sale| sale.purchase_time.to_date == date.to_date}
+  end
+
+
+#Extra Credit method
+  def self.best_day
+    date_hash = {}
+    all.each do |sale|
+      if date_hash.has_key? sale.purchase_time.to_date
+        date_hash[sale.purchase_time.to_date] += 1
+      else 
+        date_hash[sale.purchase_time.to_date] = 1
+      end
+    end
+    puts date_hash.values.max
+    date_hash.key(date_hash.values.max)
+  end
+
+
+
 end #end class Sale

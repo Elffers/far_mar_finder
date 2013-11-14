@@ -66,7 +66,8 @@ class Market
     all.keep_if {|market| market.name.to_s.include? search_term.to_s}
   end
 
-  def prefered_vendor
+  def prefered_vendor(options = {})
+    @date = options[:date] || #sale.purchase_time
     top_vendor = ''
     array = []
     vendors.each do |vendor|
@@ -77,21 +78,10 @@ class Market
     end
     puts array.max
     top_vendor
+
   # max_revenue = vendors.map {|vendor| vendor.revenue}.max
   # vendors.find_all {|vendor| vendor.revenue == max_revenue}
   end
-
- 
-
-
-
-  # def prefered_vendor(date)
-  #   vendors.each do |vendor|
-
-  #   end
-  # end
-
-
 
   def worst_vendor
     worst_vendor = ''
