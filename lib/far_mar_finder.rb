@@ -10,19 +10,21 @@ require_relative 'sale'
 class FarMarFinder
   
   def markets
+    Market.all.first.class
   end
   
   def vendors
+    Vendor.all.first.class
   end
 
   def products
+    Product.all.first.class
   end
 
   def sales
+    Sale.all.first.class
   end
   
-end
-
-
+end #end FarMarFinder
 
 
