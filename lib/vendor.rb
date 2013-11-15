@@ -65,46 +65,24 @@ class Vendor
   end
   
 # Returns Fixnum of sum of all vendor instance's sales (in cents)
+# If beginning_time and end_time are passed in, all sales between dates
   def revenue(beginning_time=nil, end_time=nil)
-    start = set_as_date(beginning_time)
-    ending = set_as_date(end_time)
+    start = Vendor.set_as_date(beginning_time)
+    ending = Vendor.set_as_date(end_time)
+
     if !beginning_time && !end_time
       Sale.revenue_by_vendor_id[@id]
-    elsif beginning_time && !end_time
-      Sale.revenue_by_date_and_vendor_id[start]
+    elsif beginning_time && !end_time 
+      Sale.revenue_by_date_and_vendor_id(start)[@id]
     else
-      puts "range"
+      revenue = 0
+      date_range = (start..ending)
+      date_range.each do |date|
+        revenue += Sale.revenue_by_date_and_vendor_id(date)[@id].to_i
+      end
+      revenue
     end
-    # revenue = 0
-    # sales.each do |sale|
-    #   revenue += sale.amount.to_i
-    # end
-    # revenue
   end
-
-# # Returns Fixnum of revenue for that vendor across the range of dates from beginning_time to end_time
-#   def revenue(beginning_time, end_time)
-#     amount = 0
-#     Sale.between(beginning_time, end_time).each do |sale|  
-#       if sale.vendor_id == id
-#         amount += sale.amount
-#       end
-#     end
-#     amount
-#   end
-
-# # Returns Fixnum of total revenue on date
-# ## Should separate code in revenue method?
-#   def revenue(date)
-#     day = set_as_date(date)
-#     revenue = 0
-#     sales.map do |sale|
-#       if sale.purchase_time.to_date == day
-#         revenue += sale.amount
-#       end
-#     end
-#     revenue
-#   end
 
 ### Extra credit methods
 
