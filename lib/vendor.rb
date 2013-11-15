@@ -71,7 +71,7 @@ class Vendor
     if !beginning_time && !end_time
       Sale.revenue_by_vendor_id[@id]
     elsif beginning_time && !end_time
-      puts "date"
+      Sale.revenue_by_date_and_vendor_id[start]
     else
       puts "range"
     end
