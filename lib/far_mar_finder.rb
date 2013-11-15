@@ -10,20 +10,29 @@ require_relative 'sale'
 class FarMarFinder
   
   def markets
-    Market.all.first.class
+    Market.inspect
   end
   
   def vendors
-    Vendor.all.first.class
+    Vendor.inspect
   end
 
   def products
-    Product.all.first.class
+    Product.inspect
   end
 
   def sales
-    Sale.all.first.class
+    Sale.inspect
   end
+
+### Extra credit method
+
+# Returns random instance
+  def random
+    far_mar = Market.all + Vendor.all + Product.all + Sale.all
+    far_mar.sample
+  end
+
   
 end #end FarMarFinder
 

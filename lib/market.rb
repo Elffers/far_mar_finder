@@ -45,6 +45,8 @@ class Market
     end
   end
 
+### Additional Market instance methods
+
 # Returns Array containing all vendor objects associated with given market
   def vendors
     Vendor.all.find_all do |vendor|
@@ -52,7 +54,7 @@ class Market
     end
   end
 
-  ### Extra Credit Methods ###
+### Extra Credit Methods ###
 
 # Returns Array containing all product objects associated with all vendors associated with given market
   def products
