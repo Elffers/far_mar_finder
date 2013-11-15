@@ -72,27 +72,21 @@ class Vendor
     sum
   end
 
-# Extra credit method
+### Extra credit methods
+
+#Returns an array containing revenue for each vendor
   def self.vendor_revenues
     @vendor_revenues ||= all.map do |vendor|
       vendor.revenue
     end
   end
 
+# Array -> hash
+# Returns hash containing top n Vendors with highest revenues, with vendor objects as keys and their respective revenues as the values
   def self.most_revenue(n)
-  # # returns the top n vendor instances ranked by total revenue
-  #   index_array = vendor_revenues.sort.reverse.take(n).map do |revenue|
-  #     @vendor_revenues.index(revenue)
-  #   end
-  #   puts @vendor_revenues.sort.reverse.take(n)
-  #   index_array.map do |index|
-  #     all[index] 
-  #   end
-  # end
     vendor_hash = {}
-    all.each do |vendor|
-      vendor_hash[vendor] = vendor.revenue
-    end
+    all.each { |vendor| vendor_hash[vendor] = vendor.revenue}
+    ## The following method assumes uniqueness between vendors and revenue values
     # vendor_hash.values.sort.reverse.take(n).map do |revenue|
     #   vendor_hash.key(revenue)
     # end
@@ -108,23 +102,68 @@ class Vendor
     end
     top_vendors
   end
-   
+
+  def self.most_items(n)
+    vendor_hash = {}
+    all.each {|vendor| vendor_hash[vendor] = vendor.sales.length}
+    top_vendors = {}
+    sale_array = []
+    vendor_hash.values.sort.reverse.take(n).each do |sale|
+      if sale_array.include? sale
+        top_vendors[sale].push vendor_hash.key(sale)
+      else
+        top_vendors[sale] = [vendor_hash.key(sale)]
+        sale_array.push sale
+      end
+    end
+    top_vendors
+  end
+
+  def self.revenue(date)
+    Sale.sales_by_day[Date.parse(date)]
+  end
+
+# Returns revenue for that vendor across the range of dates from beginning_time to end_time
+  def revenue(beginning_time, end_time)
+    amount = 0
+    Sale.between(beginning_time, end_time).each do |sale|  
+      if sale.vendor_id == id
+        amount += sale.amount
+      end
+    end
+    amount
+  end
+
+# Returns total revenue on date
+##Should separate code in revenue method?
+  def revenue(date)
+    day = set_as_date(date)
+    revenue = 0
+    sales.map do |sale|
+      if sale.purchase_time.to_date == day
+        revenue += sale.amount
+      end
+    end
+    revenue
+  end
+
+private 
+
+def set_as_time(time)
+  if time.is_a? String
+    Date.parse(time)
+  else
+   time
+  end
+end
 
 end #end of Vendor class
 
-=begin
+###self.most_items(n) returns the top n vendor instances ranked by total number of items sold
+### self.revenue(date) returns the total revenue for that date across all vendors
+# revenue(range_of_dates) returns the total revenue for that vendor across several dates
+# revenue(date) returns the total revenue for that specific purchase date
 
 
-- `self.find_by_x(match)` - where X is an attribute, returns a single instance whose X attribute case-insensitive attribute matches the match parameter. For instance, Vendor.find_by_name("windler inc") could find a Vendor with the name attribute "windler inc" or "Windler Inc".
-- `self.find_all_by_x(match)` - works just like `find_by_x` but returns a collection containing all possible matches. For example `Market.find_by_state("WA")` could return all of the Market object with `"WA"` in their state field.
-
-
-- `
-- `revenue` - 
-- `self.by_market(market_it)` - returns all of the vendors with the given `market_id`
-- `prefered_vendor` - returns the vendor with the highest revenue
-- `prefered_vendor(date)` - returns the vendor with the highest revenue for the given date
-- `worst_vendor` - returns the vendor with the lowest revenue
-- `worst_vendor(date)` - returns the vendor with the lowest revenue by date
   
-end
+# end

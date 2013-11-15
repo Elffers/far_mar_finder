@@ -34,12 +34,14 @@ class Sale
     end
   end
 
+# Return array containing all sales between beginning_time and end_time
   def self.between(beginning_time, end_time)
+    start = set_as_time(beginning_time)
+    ending = set_as_time(end_time)
     all.find_all do |sale|
-      beginning_time < Time.parse(sale.purchase_time) && Time.parse(sale.purchase_time) < end_time
+      start < sale.purchase_time && sale.purchase_time < ending
     end
   end
-
 
   def vendor
     Vendor.all.find do |vendor|
@@ -59,9 +61,10 @@ class Sale
     all.keep_if {|sale| sale.purchase_time.to_date == date.to_date}
   end
 
-#Extra Credit method
-# Counts the number of sale instances per day and returns the day with the most sales
-  def self.best_day
+### Extra Credit method
+
+# Returns hash with dates as keys and number of sales per date as values
+  def self.sales_by_day
     date_hash = {}
     all.each do |sale|
       if date_hash.has_key? sale.purchase_time.to_date
@@ -70,10 +73,48 @@ class Sale
         date_hash[sale.purchase_time.to_date] = 1
       end
     end
-    puts date_hash.values.max
-    date_hash.key(date_hash.values.max)
+    date_hash
   end
 
 
+# Puts highest number of sales and Returns date with most sales 
+  def self.best_day
+    puts sales_by_day.values.max
+    sales_by_day.key(sales_by_day.values.max).strftime("%m/%d/%Y")
+  end
+
+#Returns a hash with vendor id as key and revenue as value
+  def self.revenue_by_vendor_id
+    hash = {}
+    CSV.read("./support/sales.csv").each do |array| 
+      puts "."
+      hash[array[-2]] ||= 0
+        if hash.has_key?(array[-2])
+          hash[array[-2]] += array[2].to_i
+        end
+      end
+      hash
+    end
+
+  #   key_array = []
+  #   CSV.read("./support/sales.csv").each do |array| 
+  #     revenue = 0
+  #     if key_array.include? array[-2]
+  #       hash[array[-2]] = revenue + array[2].to_i
+  #     else
+  #       hash[array[-2]] = array[2].to_i
+  #       key_array.push array[-2]
+  #     end
+  #   hash
+  # end
+private
+def self.set_as_time(time)
+  if time.is_a? String
+    Time.parse(time)
+  else
+   time
+  end
+end
 
 end #end class Sale
+

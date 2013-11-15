@@ -63,5 +63,16 @@ describe Market do
     it "finds the vendors" do
       market.vendors.first.id.should eq 1
     end
+    
+    # My specs
+    it "responds to products" do
+      Market.new({}).should respond_to :products
+    end
+
+    it "finds the products name" do
+      market.products.first.name.should eq "Dry Beets"
+    end
+  
   end
+
 end
