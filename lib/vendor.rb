@@ -168,6 +168,8 @@ private
   def self.set_as_date(date)
     if date.is_a? String
       Date.parse(date)
+    elsif date.is_a? Time 
+      date.to_date
     else
       date
     end
