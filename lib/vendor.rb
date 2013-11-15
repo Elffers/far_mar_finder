@@ -81,6 +81,7 @@ class Vendor
     end
   end
 
+## *** Apply Sale.revenue_by_vendor_id method ***
 # Array -> hash
 # Returns hash containing top n Vendors with highest revenues, with vendor objects as keys and their respective revenues as the values
   def self.most_revenue(n)
@@ -103,6 +104,9 @@ class Vendor
     top_vendors
   end
 
+# ** Very slow--apply Sale.revenue_by_vendor_id method or similar?
+# ** More than 10 vendors for top sale number (18)
+# Returns hash of top n vendors with sales as key and array of vendors as values
   def self.most_items(n)
     vendor_hash = {}
     all.each {|vendor| vendor_hash[vendor] = vendor.sales.length}
@@ -119,11 +123,13 @@ class Vendor
     top_vendors
   end
 
+# Returns the number of sales on given date 
   def self.revenue(date)
-    Sale.sales_by_day[Date.parse(date)]
+    day = set_as_date(date)
+    Sale.sales_by_day[day]
   end
 
-# Returns revenue for that vendor across the range of dates from beginning_time to end_time
+# Returns Fixnum of revenue for that vendor across the range of dates from beginning_time to end_time
   def revenue(beginning_time, end_time)
     amount = 0
     Sale.between(beginning_time, end_time).each do |sale|  
@@ -134,8 +140,8 @@ class Vendor
     amount
   end
 
-# Returns total revenue on date
-##Should separate code in revenue method?
+# Returns Fixnum of total revenue on date
+## Should separate code in revenue method?
   def revenue(date)
     day = set_as_date(date)
     revenue = 0
@@ -149,11 +155,11 @@ class Vendor
 
 private 
 
-def set_as_time(time)
-  if time.is_a? String
-    Date.parse(time)
+def self.set_as_date(date)
+  if date.is_a? String
+    Date.parse(date)
   else
-   time
+    date
   end
 end
 
