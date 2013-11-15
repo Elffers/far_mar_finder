@@ -73,21 +73,23 @@ class Market
 
 # Returns vendor object with the higheset revenue for given market
 # Puts revenue associated with top vendor 
-  def prefered_vendor(options = {})
-    @date = options[:date] || #range of all dates of all sales for market.products 
-    top_vendor = ''
-    array = []
-    vendors.map do |vendor|
-      array.push vendor.revenue
-      if vendor.revenue == array.max
-        top_vendor = vendor
-      end
+  def prefered_vendor(date=nil)
+    if !date
+      max_revenue = vendors.map{|vendor| vendor.revenue}.max
+      top_vendor = vendors.find_all{|vendor| vendor.revenue.to_i == max_revenue.to_i}
+      puts max_revenue
+      top_vendor
+    else 
+      max_revenue = vendors.map {|vendor| Sale.revenue_by_date_and_vendor_id(date)[vendor.id].to_i}.max
+      top_vendor =  vendors.find_all{|vendor| vendor.revenue.to_i == vendors.map {|vendor|vendor.revenue}.max}
+      puts max_revenue
+      top_vendor
+      # vendors.map do |vendor|
+      #   if vendor.id == Sale.revenue_by_date_and_vendor_id(date).key(max_revenue)
+      #     top_vendor = vendor
+      #   end
+      # end
     end
-    puts array.max
-    top_vendor
-
-  # max_revenue = vendors.map {|vendor| vendor.revenue}.max
-  # vendors.find_all {|vendor| vendor.revenue == max_revenue}
   end
 
 # Returns vendor object with the lowest revenue for given market
