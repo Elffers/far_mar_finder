@@ -83,7 +83,7 @@ class Market
 
 # Returns vendor object with the lowest revenue for given market
 # Puts revenue associated with worst vendor 
-## *** problem if a vendor associated with market did not make a sale on given date
+## *** problem if a vendor associated with market did not make a sale on given date ***
   def worst_vendor(date=nil)
     if !date
       min_revenue = vendors.map {|vendor| vendor.revenue}.min
