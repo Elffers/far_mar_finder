@@ -31,13 +31,6 @@ class Market
     end
   end
 
-  # def self.find_by(attribute, match)
-  #   param = attribute.to_sym
-  #   all.find do |market|
-  #     market.param == match.to_s
-  #   end
-  # end
-
 # Returns Array containing all market objects associated with "state"
   def self.find_all_by_state(state)
     all.find_all do |market|
@@ -80,15 +73,11 @@ class Market
       puts max_revenue
       top_vendor
     else 
-      max_revenue = vendors.map {|vendor| Sale.revenue_by_date_and_vendor_id(date)[vendor.id].to_i}.max
-      top_vendor =  vendors.find_all{|vendor| vendor.revenue.to_i == vendors.map {|vendor|vendor.revenue}.max}
+      hash =  Sale.revenue_by_date_and_vendor_id(date)
+      max_revenue = vendors.map {|vendor| hash[vendor.id].to_i}.max
+      top_vendor_id = hash.key(max_revenue)
       puts max_revenue
-      top_vendor
-      # vendors.map do |vendor|
-      #   if vendor.id == Sale.revenue_by_date_and_vendor_id(date).key(max_revenue)
-      #     top_vendor = vendor
-      #   end
-      # end
+      Vendor.find(top_vendor_id)
     end
   end
 
