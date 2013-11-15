@@ -73,7 +73,7 @@ class Market
       puts max_revenue
       top_vendor
     else 
-      hash =  Sale.revenue_by_date_and_vendor_id(date)
+      hash = Sale.revenue_by_date_and_vendor_id(date)
       max_revenue = vendors.map {|vendor| hash[vendor.id].to_i}.max
       top_vendor_id = hash.key(max_revenue)
       puts max_revenue
@@ -83,11 +83,20 @@ class Market
 
 # Returns vendor object with the lowest revenue for given market
 # Puts revenue associated with worst vendor 
-  def worst_vendor
-    min_revenue = vendors.map {|vendor| vendor.revenue}.min
-    puts min_revenue
-    worst_vendor = vendors.find_all{|vendor| vendor.revenue == min_revenue}
-    worst_vendor
+## *** problem if a vendor associated with market did not make a sale on given date
+  def worst_vendor(date=nil)
+    if !date
+      min_revenue = vendors.map {|vendor| vendor.revenue}.min
+      worst_vendor = vendors.find_all{|vendor| vendor.revenue.to_i == min_revenue.to_i}
+      puts min_revenue
+      worst_vendor
+    else 
+      hash = Sale.revenue_by_date_and_vendor_id(date)
+      min_revenue = vendors.map {|vendor| hash[vendor.id].to_i}.min
+      worst_vendor_id = hash.key(min_revenue)
+      puts min_revenue
+      Vendor.find(worst_vendor_id)
+    end
   end
   
 end # end class Market
