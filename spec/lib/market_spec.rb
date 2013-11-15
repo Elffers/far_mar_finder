@@ -22,6 +22,10 @@ describe Market do
       market_class.should respond_to :find
     end
 
+    it "find_by_state" do
+      market_class.find_by_state("New York").zip.should eq "13329"
+    end
+
     it "'find_all_by_state' should return" do
       market_class.find_all_by_state("Oregon").first.name.should eq "People's Co-op Farmers Market"
     end
