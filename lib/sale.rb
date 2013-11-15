@@ -38,6 +38,8 @@ class Sale
     end
   end
 
+### Additional Sale methods from README 
+
 # Return array containing all sales between beginning_time and end_time
   def self.between(beginning_time, end_time)
     start = set_as_time(beginning_time)
@@ -61,8 +63,8 @@ class Sale
     end
   end
 
-##My own extra methods
-#returns collection of products sold on a particular day
+### My own extra methods
+# Returns collection of products sold on a particular day
   def self.products_on_date(date)
     all.keep_if {|sale| sale.purchase_time.to_date == date.to_date}
   end
@@ -70,6 +72,7 @@ class Sale
 ### Extra Credit method
 
 # Returns hash with dates as keys and number of sales per date as values
+# Helper method for self.best_day method
   def self.sales_by_day
     date_hash = {}
     all.each do |sale|
@@ -82,11 +85,13 @@ class Sale
     date_hash
   end
 
-
-# Puts highest number of sales and Returns date with most sales 
+# Returns date with most sales 
+# Puts highest number of sales
   def self.best_day
-    puts sales_by_day.values.max
-    sales_by_day.key(sales_by_day.values.max).strftime("%m/%d/%Y")
+    max_sales = sales_by_day.values.max
+    puts max_sales
+    best_day = sales_by_day.key(max_sales)
+    best_day.strftime("%m/%d/%Y")
   end
 
 # Returns a hash with vendor id as key and revenue as value
