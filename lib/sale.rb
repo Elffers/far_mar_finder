@@ -16,21 +16,25 @@ class Sale
     end
   end
 
+# Finds sale instance that matches argument id
+# Returns single sale object 
   def self.find(id)
     all.find do |sale|
       sale.id.to_i == id.to_i
     end
   end
 
-  def self.find_by_vendor_id(match)
+# Returns first sale object associated with vendor with given vendor id "id"
+  def self.find_by_vendor_id(id)
     all.find do |sale|
-      sale.vendor_id.to_i == match.to_i
+      sale.vendor_id.to_i == id.to_i
     end
   end
 
-  def self.find_all_by_vendor_id(match)
+# Returns array of sale objects associated with vendor with given vendor id "id"
+  def self.find_all_by_vendor_id(id)
     all.find_all do |sale|
-      sale.vendor_id == match.to_s
+      sale.vendor_id == id.to_i
     end
   end
 
@@ -43,12 +47,14 @@ class Sale
     end
   end
 
+# Returns single vendor object associated with given sale instance
   def vendor
     Vendor.all.find do |vendor|
       vendor.id.to_i == @vendor_id.to_i
     end
   end
 
+# Returns single product object associated with given sale instance
   def product
     Product.all.find do |product|
       product.id.to_i == @product_id.to_i
@@ -83,35 +89,27 @@ class Sale
     sales_by_day.key(sales_by_day.values.max).strftime("%m/%d/%Y")
   end
 
-#Returns a hash with vendor id as key and revenue as value
+# Returns a hash with vendor id as key and revenue as value
   def self.revenue_by_vendor_id
     hash = {}
     CSV.read("./support/sales.csv").each do |array| 
       hash[array[-2]] ||= 0
       hash[array[-2]] += array[2].to_i
-      end
-      hash
     end
-
-  #   key_array = []
-  #   CSV.read("./support/sales.csv").each do |array| 
-  #     revenue = 0
-  #     if key_array.include? array[-2]
-  #       hash[array[-2]] = revenue + array[2].to_i
-  #     else
-  #       hash[array[-2]] = array[2].to_i
-  #       key_array.push array[-2]
-  #     end
-  #   hash
-  # end
-private
-def self.set_as_time(time)
-  if time.is_a? String
-    Time.parse(time)
-  else
-   time
+    hash
   end
-end
+
+private
+
+# Returns time argument as a Time object
+# Helper function for methods that compare Time objects
+  def self.set_as_time(time)
+    if time.is_a? String
+      Time.parse(time)
+    else
+     time
+    end
+  end
 
 end #end class Sale
 
