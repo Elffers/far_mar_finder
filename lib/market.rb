@@ -17,14 +17,14 @@ class Market
     end
   end
 
-  # Returns single market object associated with market "id"
+# Returns single market object associated with market "id"
   def self.find(id)
     all.find do |market|
       market.id.to_i == id.to_i
     end
   end
 
-  # Returns first instance of market object associated with "state"
+# Returns first instance of market object associated with "state"
   def self.find_by_state(state)
     all.find do |market|
       market.state == state.to_s
@@ -38,14 +38,14 @@ class Market
   #   end
   # end
 
-  # Returns Array containing all market objects associated with "state"
+# Returns Array containing all market objects associated with "state"
   def self.find_all_by_state(state)
     all.find_all do |market|
       market.state == state.to_s
     end
   end
 
-  # Returns Array containing all vendor objects associated with given market
+# Returns Array containing all vendor objects associated with given market
   def vendors
     Vendor.all.find_all do |vendor|
       vendor.market_id.to_i == @id.to_i
@@ -54,7 +54,7 @@ class Market
 
   ### Extra Credit Methods ###
 
-  # Returns Array containing all product objects associated with all vendors associated with given market
+# Returns Array containing all product objects associated with all vendors associated with given market
   def products
     products = []
     vendors.each do |vendor|

@@ -34,7 +34,7 @@ attr_reader :id, :name, :vendor_id
     end
   end
 
- # Returns vendor object associated with given product instance
+# Returns vendor object associated with given product instance
   def vendor
     Vendor.all.find do |vendor|
       vendor.id.to_i == @vendor_id.to_i

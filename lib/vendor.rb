@@ -8,21 +8,21 @@ class Vendor
     @market_id      = array[3].to_i
   end
 
-  # returns all rows of the CSV file as objects of an array 
+  # Returns Array of vendor objects
   def self.all
     @answer ||= CSV.read("./support/vendors.csv").map do |array|
       Vendor.new(array)
     end
   end
 
-  # returns the row of the CSV where the ID field matches the argument
+  # Returns vendor object associated with id 
   def self.find(id)
     all.find do |vendor|
       vendor.id.to_i == id.to_i
     end
   end
 
-
+  # Returns vendor object associated with name
   def self.find_by_name(name)
     all.find do |vendor|
       vendor.name == name.to_s
