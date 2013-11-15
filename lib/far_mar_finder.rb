@@ -10,19 +10,19 @@ require_relative 'sale'
 class FarMarFinder
   
   def markets
-    Market.inspect
+    Market
   end
   
   def vendors
-    Vendor.inspect
+    Vendor
   end
 
   def products
-    Product.inspect
+    Product
   end
 
   def sales
-    Sale.inspect
+    Sale
   end
 
 ### Extra credit method

@@ -97,7 +97,8 @@ class Market
   def worst_vendor
     min_revenue = vendors.map {|vendor| vendor.revenue}.min
     puts min_revenue
-    vendors.find_all{|vendor| vendor.revenue == min_revenue}
+    worst_vendor = vendors.find_all{|vendor| vendor.revenue == min_revenue}
+    worst_vendor
   end
   
 end # end class Market
