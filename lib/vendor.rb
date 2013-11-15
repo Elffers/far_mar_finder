@@ -8,62 +8,63 @@ class Vendor
     @market_id      = array[3].to_i
   end
 
-  # Returns Array of vendor objects
+# Returns Array of vendor objects
   def self.all
     @answer ||= CSV.read("./support/vendors.csv").map do |array|
       Vendor.new(array)
     end
   end
 
-  # Returns vendor object associated with id 
+# Returns vendor object associated with id 
   def self.find(id)
     all.find do |vendor|
       vendor.id.to_i == id.to_i
     end
   end
 
-  # Returns vendor object associated with name
+# Returns vendor object associated with name
   def self.find_by_name(name)
     all.find do |vendor|
       vendor.name == name.to_s
     end
   end
 
+# Returns Array containing vendor objects associated with market with id "id"
   def self.by_market(id)
     all.find_all do |vendor|
       vendor.market_id == id.to_i
     end
   end
   
-  
+# Returns Array containing all vendor objects with number of employees "number"
   def self.by_no_of_employees(number)
     all.find_all do |vendor|
       vendor.no_of_employees == number.to_i
     end
   end
 
-  # returns the `Market` instance that is associated with a vendor instance using the `Vendor` `market_id` field
+# Returns market object associated with vendor instance
   def market
     Market.all.find do |market|
       market.id.to_i == @market_id.to_i
     end
   end
   
-  # returns a collection of `Product` instances that are associated with a vendor instance by the `Product` `vendor_id` field.
+# Returns Array containing product objects associated with vendor instance
   def products
     Product.all.find_all do |product|
       product.vendor_id.to_i == @id.to_i
     end
   end
 
-  # returns a collection of `Sale` instances that are associated with a vendor instance by the `vendor_id` field.
+# Returns Array of sale objects associated with vendor instance
   def sales 
     Sale.all.find_all do |sale|
       sale.vendor_id.to_i == @id.to_i
     end
   end
   
-  # Returns Fixnum of sum of all a vendor instance's sales (in cents)
+# Returns Fixnum of sum of all vendor instance's sales (in cents)
   def revenue
     sum = 0
     sales.each do |sale|
@@ -74,7 +75,7 @@ class Vendor
 
 ### Extra credit methods
 
-#Returns an array containing revenue for each vendor
+# Returns Array containing revenue for each vendor
   def self.vendor_revenues
     @vendor_revenues ||= all.map do |vendor|
       vendor.revenue
@@ -156,22 +157,13 @@ class Vendor
 #   end
 
 private 
-
-def self.set_as_date(date)
-  if date.is_a? String
-    Date.parse(date)
-  else
-    date
+# Returns date as Date object; helper function for methods requiring dates
+  def self.set_as_date(date)
+    if date.is_a? String
+      Date.parse(date)
+    else
+      date
+    end
   end
-end
 
 end #end of Vendor class
-
-###self.most_items(n) returns the top n vendor instances ranked by total number of items sold
-### self.revenue(date) returns the total revenue for that date across all vendors
-# revenue(range_of_dates) returns the total revenue for that vendor across several dates
-# revenue(date) returns the total revenue for that specific purchase date
-
-
-  
-# end
