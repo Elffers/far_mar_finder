@@ -66,12 +66,37 @@ class Vendor
   
 # Returns Fixnum of sum of all vendor instance's sales (in cents)
   def revenue
-    sum = 0
-    sales.each do |sale|
-      sum = sum + sale.amount.to_i
-    end
-    sum
+    Sale.revenue_by_vendor_id[@id]
+    # revenue = 0
+    # sales.each do |sale|
+    #   revenue += sale.amount.to_i
+    # end
+    # revenue
   end
+
+# # Returns Fixnum of revenue for that vendor across the range of dates from beginning_time to end_time
+#   def revenue(beginning_time, end_time)
+#     amount = 0
+#     Sale.between(beginning_time, end_time).each do |sale|  
+#       if sale.vendor_id == id
+#         amount += sale.amount
+#       end
+#     end
+#     amount
+#   end
+
+# # Returns Fixnum of total revenue on date
+# ## Should separate code in revenue method?
+#   def revenue(date)
+#     day = set_as_date(date)
+#     revenue = 0
+#     sales.map do |sale|
+#       if sale.purchase_time.to_date == day
+#         revenue += sale.amount
+#       end
+#     end
+#     revenue
+#   end
 
 ### Extra credit methods
 
@@ -82,7 +107,7 @@ class Vendor
     end
   end
 
-## *** Apply Sale.revenue_by_vendor_id method ***
+# *** Apply Sale.revenue_by_vendor_id method ***
 # Array -> hash
 # Returns hash containing top n Vendors with highest revenues, with vendor objects as keys and their respective revenues as the values
   def self.most_revenue(n)
@@ -129,32 +154,6 @@ class Vendor
     day = set_as_date(date)
     Sale.sales_by_day[day]
   end
-
-### *** three instance methods called "revenue", number of arguments must agree == options hash?? *** ###
-
-# # Returns Fixnum of revenue for that vendor across the range of dates from beginning_time to end_time
-#   def revenue(beginning_time, end_time)
-#     amount = 0
-#     Sale.between(beginning_time, end_time).each do |sale|  
-#       if sale.vendor_id == id
-#         amount += sale.amount
-#       end
-#     end
-#     amount
-#   end
-
-# # Returns Fixnum of total revenue on date
-# ## Should separate code in revenue method?
-#   def revenue(date)
-#     day = set_as_date(date)
-#     revenue = 0
-#     sales.map do |sale|
-#       if sale.purchase_time.to_date == day
-#         revenue += sale.amount
-#       end
-#     end
-#     revenue
-#   end
 
 private 
 # Returns date as Date object; helper function for methods requiring dates

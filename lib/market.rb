@@ -73,8 +73,8 @@ class Market
 
 # Returns vendor object with the higheset revenue for given market
 # Puts revenue associated with top vendor 
-  def prefered_vendor
-    # @date = options[:date] || #sale.purchase_time
+  def prefered_vendor(options = {})
+    @date = options[:date] || #range of all dates of all sales for market.products 
     top_vendor = ''
     array = []
     vendors.map do |vendor|

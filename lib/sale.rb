@@ -98,8 +98,9 @@ class Sale
   def self.revenue_by_vendor_id
     hash = {}
     CSV.read("./support/sales.csv").each do |array| 
-      hash[array[-2]] ||= 0
-      hash[array[-2]] += array[2].to_i
+      vendor_id = array[-2].to_i
+      hash[vendor_id] ||= 0
+      hash[vendor_id] += array[2].to_i
     end
     hash
   end
