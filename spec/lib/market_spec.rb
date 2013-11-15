@@ -21,6 +21,11 @@ describe Market do
     it "responds to 'find'" do
       market_class.should respond_to :find
     end
+
+    it "'find_all_by_state' should return" do
+      market_class.find_all_by_state("Oregon").first.name.should eq "People's Co-op Farmers Market"
+    end
+
   end
   
   describe "attributes" do
