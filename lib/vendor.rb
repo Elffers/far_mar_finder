@@ -65,8 +65,16 @@ class Vendor
   end
   
 # Returns Fixnum of sum of all vendor instance's sales (in cents)
-  def revenue
-    Sale.revenue_by_vendor_id[@id]
+  def revenue(beginning_time=nil, end_time=nil)
+    start = set_as_date(beginning_time)
+    ending = set_as_date(end_time)
+    if !beginning_time && !end_time
+      Sale.revenue_by_vendor_id[@id]
+    elsif beginning_time && !end_time
+      puts "date"
+    else
+      puts "range"
+    end
     # revenue = 0
     # sales.each do |sale|
     #   revenue += sale.amount.to_i

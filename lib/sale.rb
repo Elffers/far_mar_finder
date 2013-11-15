@@ -94,13 +94,13 @@ class Sale
     best_day.strftime("%m/%d/%Y")
   end
 
-# Returns a hash with vendor id as key and revenue as value
+# Returns a hash with Fixnum vendor id as key and Fixnum revenue as value
   def self.revenue_by_vendor_id
     hash = {}
     CSV.read("./support/sales.csv").each do |array| 
       vendor_id = array[-2].to_i
       hash[vendor_id] ||= 0
-      hash[vendor_id] += array[2].to_i
+      hash[vendor_id] += array[1].to_i
     end
     hash
   end
