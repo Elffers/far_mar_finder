@@ -105,7 +105,6 @@ class Sale
     hash
   end
 
-
 # Returns hash with Fixnum vendor id as key and revenue as value for given "date"
   def self.revenue_by_date_and_vendor_id(date)
     hash = {}

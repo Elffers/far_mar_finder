@@ -119,23 +119,13 @@ class Vendor
     # top_vendors
   end
 
-# ** Very slow--apply Sale.revenue_by_vendor_id method or similar?
 # ** More than 10 vendors for top sale number (18)
 # Returns hash of top n vendors with sales as key and array of vendors as values
   def self.most_items(n)
-    vendor_hash = {}
-    all.each {|vendor| vendor_hash[vendor] = vendor.sales.length}
-    top_vendors = {}
-    sale_array = []
-    vendor_hash.values.sort.reverse.take(n).each do |sale|
-      if sale_array.include? sale
-        top_vendors[sale].push vendor_hash.key(sale)
-      else
-        top_vendors[sale] = [vendor_hash.key(sale)]
-        sale_array.push sale
-      end
-    end
-    top_vendors
+    top_sales = Sale.sales_by_vendor_id.values.sort.reverse.take(n)
+    vendor_ids = top_sales.map {|sale| Sale.sales_by_vendor_id.key(sale)}
+    puts top_sales
+    vendor_ids.map {|id| Vendor.find(id)}
   end
 
 # Returns Fixnum of number of sales on given date 
