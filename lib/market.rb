@@ -61,7 +61,9 @@ class Market
 
 # Returns Array containing all market objects whose name contains search_term
   def self.search(search_term)
-    all.keep_if {|market| market.name.to_s.include? search_term.to_s}
+    all.find_all do |market| 
+      market.name.to_s.include? search_term.to_s
+    end
   end
 
 # Returns vendor object with the higheset revenue for given market
