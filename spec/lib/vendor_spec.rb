@@ -22,11 +22,19 @@ describe Vendor do
     it "responds to 'find'" do
       vendor_class.should respond_to :find
     end
+
+    it "'find_by_name' should return" do
+      vendor_class.find_by_name("Bechtelar Inc").id.should eq "7".to_i
+    end
     
     it "responds to 'by_market'" do
       vendor_class.should respond_to :by_market
     end
     
+    it "responds to 'find_by_employees" do
+      vendor_class.should respond_to :by_no_of_employees
+    end
+
     it "find the first vendor by market 1" do
       vendor_class.by_market(100).first.name.should eq "Schiller-Ledner"
     end
