@@ -66,7 +66,7 @@ class Sale
 ### My own extra methods
 # Returns collection of products sold on a particular day
   def self.products_on_date(date)
-    all.keep_if {|sale| sale.purchase_time.to_date == date.to_date}
+    all.find_all {|sale| sale.purchase_time.to_date == date.to_date}
   end
 
 ### Extra Credit method
