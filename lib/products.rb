@@ -94,7 +94,7 @@ def revenue
     end
   end
 
-# Returns top n products ranked by total revenue
+# Returns Array of top n products ranked by total revenue
   def self.most_revenue(n) 
     index_array = product_revenues.sort.reverse.take(n).map do|revenue|
       @product_revenues.index(revenue)

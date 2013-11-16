@@ -138,7 +138,7 @@ class Vendor
     top_vendors
   end
 
-# Returns the number of sales on given date 
+# Returns Fixnum of number of sales on given date 
   def self.revenue(date)
     day = set_as_date(date)
     Sale.sales_by_day[day]
