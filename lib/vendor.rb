@@ -43,7 +43,7 @@ class Vendor
     end
   end
 
-# Returns market object associated with vendor instance
+# Returns single market object associated with vendor instance
   def market
     Market.all.find do |market|
       market.id.to_i == @market_id.to_i
@@ -86,14 +86,6 @@ class Vendor
 
 ### Extra credit methods
 
-# Returns Array containing revenue for each vendor
-  def self.vendor_revenues
-    @vendor_revenues ||= all.map do |vendor|
-      vendor.revenue
-    end
-  end
-
-# Array -> hash
 # Returns hash containing top n Vendors with highest revenues, with vendor objects as keys and their respective revenues as the values
   def self.most_revenue(n)
     top_revenues = Sale.revenue_by_vendor_id.values.sort.reverse.take(n)
