@@ -93,27 +93,30 @@ class Vendor
     end
   end
 
-# *** Apply Sale.revenue_by_vendor_id method ***
 # Array -> hash
 # Returns hash containing top n Vendors with highest revenues, with vendor objects as keys and their respective revenues as the values
   def self.most_revenue(n)
-    vendor_hash = {}
-    all.each { |vendor| vendor_hash[vendor] = vendor.revenue}
-    ## The following method assumes uniqueness between vendors and revenue values
-    # vendor_hash.values.sort.reverse.take(n).map do |revenue|
-    #   vendor_hash.key(revenue)
+    top_revenues = Sale.revenue_by_vendor_id.values.sort.reverse.take(n)
+    vendor_ids = top_revenues.map {|revenue| Sale.revenue_by_vendor_id.key(revenue)}
+    puts top_revenues
+    vendor_ids.map {|id| Vendor.find(id)}
+    # vendor_hash = {}
+    # all.each { |vendor| vendor_hash[vendor] = vendor.revenue}
+    # ## The following method assumes uniqueness between vendors and revenue values
+    # # vendor_hash.values.sort.reverse.take(n).map do |revenue|
+    # #   vendor_hash.key(revenue)
+    # # end
+    # top_vendors = {}
+    # revenue_array = []
+    # vendor_hash.values.sort.reverse.take(n).each do |revenue|
+    #   if revenue_array.include? revenue
+    #     top_vendors[revenue].push vendor_hash.key(revenue)
+    #   else
+    #     top_vendors[revenue] = [vendor_hash.key(revenue)]
+    #     revenue_array.push revenue
+    #   end
     # end
-    top_vendors = {}
-    revenue_array = []
-    vendor_hash.values.sort.reverse.take(n).each do |revenue|
-      if revenue_array.include? revenue
-        top_vendors[revenue].push vendor_hash.key(revenue)
-      else
-        top_vendors[revenue] = [vendor_hash.key(revenue)]
-        revenue_array.push revenue
-      end
-    end
-    top_vendors
+    # top_vendors
   end
 
 # ** Very slow--apply Sale.revenue_by_vendor_id method or similar?
