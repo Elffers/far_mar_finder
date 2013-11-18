@@ -38,6 +38,14 @@ describe Sale do
       expect(sale_class.find_all_by_vendor_id(5).count).to eq 9
     end
 
+    it "responds to products_on_date" do
+      sale_class.should respond_to :products_on_date
+    end
+
+    it "products_on_date should return" do
+      expect(sale_class.products_on_date(Date.new(2013,11,7)).first.id).to eq 1
+    end
+
   end
   
   describe "attributes" do
