@@ -40,7 +40,7 @@ class Sale
 
 ### Additional Sale methods from README 
 
-# Return array containing all sales between beginning_time and end_time
+# Return array containing all sales between beginning_time and end_time, NOT inclusive
   def self.between(beginning_time, end_time)
     start = set_as_time(beginning_time)
     ending = set_as_time(end_time)

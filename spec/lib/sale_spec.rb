@@ -10,6 +10,7 @@ describe Sale do
   end
   
   describe "class methods" do
+
     it "responds to 'all'" do
       sale_class.should respond_to :all
     end
@@ -46,8 +47,14 @@ describe Sale do
       expect(sale_class.products_on_date(Date.new(2013,11,7)).first.id).to eq 1
     end
 
-  end
+    it "sale.between should return" do
+      sale_class.should_receive(:all).and_return(CSV.read("./support/sales.csv").map { |array|
+      Sale.new(array)}.take(10)) # this artificially sets the return as a subset of the original CSV as just the first 10 objects
+      sale_class.between(Date.new(2013,11,8), Date.new(2013,11,11)).count.should eq 3
+    end
   
+  end
+
   describe "attributes" do
     let(:sale) { sale_class.find(1) }
     # 1,People's Co-op Farmers Sale,30,Portland,Multnomah,Oregon,97202
