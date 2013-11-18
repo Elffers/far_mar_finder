@@ -30,6 +30,10 @@ describe Market do
       market_class.find_all_by_state("Oregon").first.name.should eq "People's Co-op Farmers Market"
     end
 
+    it "'search' should return" do
+      market_class.search("Otsiningo Park").first.zip.should eq "13905"
+    end
+
   end
   
   describe "attributes" do

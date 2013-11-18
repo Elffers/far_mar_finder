@@ -14,27 +14,27 @@
       <img src="./assets/0.8.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2013-11-15T19:30:23-08:00">2013-11-15T19:30:23-08:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2013-11-18T14:05:27-08:00">2013-11-18T14:05:27-08:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">55.34%</span></span>
+    (<span class="covered_percent"><span class="red">55.89%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         878.08
+         876.66
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>5</b> files in total.
-    <b>262</b> relevant lines. 
-    <span class="green"><b>145</b> lines covered</span> and
-    <span class="red"><b>117</b> lines missed </span>
+    <b>263</b> relevant lines. 
+    <span class="green"><b>147</b> lines covered</span> and
+    <span class="red"><b>116</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -57,17 +57,17 @@
         <td>18</td>
         <td>16</td>
         <td>2</td>
-        <td>4.0</td>
+        <td>4.1</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#85ca719a63278bea0c6d3875eea7406902d5a1a5" class="src_link" title="lib/market.rb">lib/market.rb</a></td>
-        <td class="red strong">61.11 %</td>
-        <td>102</td>
-        <td>54</td>
-        <td>33</td>
-        <td>21</td>
-        <td>184.3</td>
+        <td class="red strong">63.64 %</td>
+        <td>104</td>
+        <td>55</td>
+        <td>35</td>
+        <td>20</td>
+        <td>190.1</td>
       </tr>
       
       <tr>
@@ -202,8 +202,8 @@
           <code class="ruby">  def markets</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="13">
-          <span class="hits">15</span>
+        <li class="covered" data-hits="16" data-linenumber="13">
+          <span class="hits">16</span>
           
           <code class="ruby">    Market</code>
         </li>
@@ -371,11 +371,11 @@
         <div class="source_table" id="85ca719a63278bea0c6d3875eea7406902d5a1a5">
   <div class="header">
     <h3>lib/market.rb</h3>
-    <h4><span class="red">61.11 %</span> covered</h4>
+    <h4><span class="red">63.64 %</span> covered</h4>
     <div>
-      <b>54</b> relevant lines. 
-      <span class="green"><b>33</b> lines covered</span> and
-      <span class="red"><b>21</b> lines missed.</span>
+      <b>55</b> relevant lines. 
+      <span class="green"><b>35</b> lines covered</span> and
+      <span class="red"><b>20</b> lines missed.</span>
     </div>
   </div>
   
@@ -478,8 +478,8 @@
           <code class="ruby">      Market.new(array)</code>
         </li>
       
-        <li class="covered" data-hits="13" data-linenumber="17">
-          <span class="hits">13</span>
+        <li class="covered" data-hits="14" data-linenumber="17">
+          <span class="hits">14</span>
           
           <code class="ruby">    end</code>
         </li>
@@ -760,235 +760,247 @@
           <code class="ruby">  def self.search(search_term)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="64">
+        <li class="covered" data-hits="1" data-linenumber="64">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">    all.keep_if {|market| market.name.to_s.include? search_term.to_s}</code>
+          <code class="ruby">    all.find_all do |market| </code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="65">
+        <li class="covered" data-hits="500" data-linenumber="65">
+          <span class="hits">500</span>
           
-          
-          <code class="ruby">  end</code>
+          <code class="ruby">      market.name.to_s.include? search_term.to_s</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="66">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="67">
           
           
-          <code class="ruby"># Returns vendor object with the higheset revenue for given market</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="68">
           
           
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="69">
+          
+          
+          <code class="ruby"># Returns vendor object with the higheset revenue for given market</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="70">
+          
+          
           <code class="ruby"># Puts revenue associated with top vendor </code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="69">
+        <li class="covered" data-hits="1" data-linenumber="71">
           <span class="hits">1</span>
           
           <code class="ruby">  def prefered_vendor(date=nil)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="70">
-          
-          
-          <code class="ruby">    if !date</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="71">
-          
-          
-          <code class="ruby">      max_revenue = vendors.map{|vendor| vendor.revenue.to_i}.max</code>
-        </li>
-      
         <li class="missed" data-hits="0" data-linenumber="72">
           
           
-          <code class="ruby">      top_vendor = vendors.find_all{|vendor| vendor.revenue.to_i == max_revenue.to_i}</code>
+          <code class="ruby">    if !date</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="73">
           
           
-          <code class="ruby">      puts max_revenue</code>
+          <code class="ruby">      max_revenue = vendors.map{|vendor| vendor.revenue.to_i}.max</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="74">
           
           
-          <code class="ruby">      top_vendor</code>
+          <code class="ruby">      top_vendor = vendors.find_all{|vendor| vendor.revenue.to_i == max_revenue.to_i}</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="75">
-          
-          
-          <code class="ruby">    else </code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="76">
-          
-          
-          <code class="ruby">      hash = Sale.revenue_by_date_and_vendor_id(date)</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="77">
-          
-          
-          <code class="ruby">      max_revenue = vendors.map {|vendor| hash[vendor.id].to_i}.max</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="78">
-          
-          
-          <code class="ruby">      top_vendor_id = hash.key(max_revenue)</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="79">
+        <li class="missed" data-hits="0" data-linenumber="75">
           
           
           <code class="ruby">      puts max_revenue</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="80">
+        <li class="missed" data-hits="0" data-linenumber="76">
           
           
-          <code class="ruby">      Vendor.find(top_vendor_id)</code>
+          <code class="ruby">      top_vendor</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="81">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="82">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="83">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="84">
-          
-          
-          <code class="ruby"># Returns vendor object with the lowest revenue for given market</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="85">
-          
-          
-          <code class="ruby"># Puts revenue associated with worst vendor </code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="86">
-          
-          
-          <code class="ruby">## *** problem if a vendor associated with market did not make a sale on given date ***</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="87">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def worst_vendor(date=nil)</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="88">
-          
-          
-          <code class="ruby">    if !date</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="89">
-          
-          
-          <code class="ruby">      min_revenue = vendors.map {|vendor| vendor.revenue}.min</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="90">
-          
-          
-          <code class="ruby">      worst_vendor = vendors.find_all{|vendor| vendor.revenue.to_i == min_revenue.to_i}</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="91">
-          
-          
-          <code class="ruby">      puts min_revenue</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="92">
-          
-          
-          <code class="ruby">      worst_vendor</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="93">
+        <li class="never" data-hits="" data-linenumber="77">
           
           
           <code class="ruby">    else </code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="94">
+        <li class="missed" data-hits="0" data-linenumber="78">
           
           
           <code class="ruby">      hash = Sale.revenue_by_date_and_vendor_id(date)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="95">
+        <li class="missed" data-hits="0" data-linenumber="79">
           
           
-          <code class="ruby">      min_revenue = vendors.map {|vendor| hash[vendor.id].to_i}.min</code>
+          <code class="ruby">      max_revenue = vendors.map {|vendor| hash[vendor.id].to_i}.max</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="96">
+        <li class="missed" data-hits="0" data-linenumber="80">
           
           
-          <code class="ruby">      worst_vendor_id = hash.key(min_revenue)</code>
+          <code class="ruby">      top_vendor_id = hash.key(max_revenue)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="97">
+        <li class="missed" data-hits="0" data-linenumber="81">
           
           
-          <code class="ruby">      puts min_revenue</code>
+          <code class="ruby">      puts max_revenue</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="98">
+        <li class="missed" data-hits="0" data-linenumber="82">
           
           
-          <code class="ruby">      Vendor.find(worst_vendor_id)</code>
+          <code class="ruby">      Vendor.find(top_vendor_id)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="99">
+        <li class="never" data-hits="" data-linenumber="83">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="100">
+        <li class="never" data-hits="" data-linenumber="84">
           
           
           <code class="ruby">  end</code>
         </li>
       
+        <li class="never" data-hits="" data-linenumber="85">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="86">
+          
+          
+          <code class="ruby"># Returns vendor object with the lowest revenue for given market</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="87">
+          
+          
+          <code class="ruby"># Puts revenue associated with worst vendor </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="88">
+          
+          
+          <code class="ruby">## *** problem if a vendor associated with market did not make a sale on given date ***</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="89">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def worst_vendor(date=nil)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="90">
+          
+          
+          <code class="ruby">    if !date</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="91">
+          
+          
+          <code class="ruby">      min_revenue = vendors.map {|vendor| vendor.revenue}.min</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="92">
+          
+          
+          <code class="ruby">      worst_vendor = vendors.find_all{|vendor| vendor.revenue.to_i == min_revenue.to_i}</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="93">
+          
+          
+          <code class="ruby">      puts min_revenue</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="94">
+          
+          
+          <code class="ruby">      worst_vendor</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="95">
+          
+          
+          <code class="ruby">    else </code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="96">
+          
+          
+          <code class="ruby">      hash = Sale.revenue_by_date_and_vendor_id(date)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="97">
+          
+          
+          <code class="ruby">      min_revenue = vendors.map {|vendor| hash[vendor.id].to_i}.min</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="98">
+          
+          
+          <code class="ruby">      worst_vendor_id = hash.key(min_revenue)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="99">
+          
+          
+          <code class="ruby">      puts min_revenue</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="100">
+          
+          
+          <code class="ruby">      Vendor.find(worst_vendor_id)</code>
+        </li>
+      
         <li class="never" data-hits="" data-linenumber="101">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="102">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="103">
           
           
           <code class="ruby">  </code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="102">
+        <li class="never" data-hits="" data-linenumber="104">
           
           
           <code class="ruby">end # end class Market</code>
@@ -2101,7 +2113,7 @@
         <li class="missed" data-hits="0" data-linenumber="69">
           
           
-          <code class="ruby">    all.keep_if {|sale| sale.purchase_time.to_date == date.to_date}</code>
+          <code class="ruby">    all.find_all {|sale| sale.purchase_time.to_date == date.to_date}</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="70">
