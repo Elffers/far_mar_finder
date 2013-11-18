@@ -21,6 +21,15 @@ describe Sale do
     it "responds to 'find'" do
       sale_class.should respond_to :find
     end
+
+    it "responds to find_by_vendor_id" do
+      sale_class.should respond_to :find_by_vendor_id
+    end
+
+    it "find_by_vendor_id(5) should return" do
+      expect(sale_class.find_by_vendor_id(5).id).to eq 22
+    end
+
   end
   
   describe "attributes" do
