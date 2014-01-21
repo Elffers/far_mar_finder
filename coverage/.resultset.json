@@ -1,15 +1,13 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/hsing-huihsu/Ada-class/Projects-gitrepo/far_mar_finder/lib/far_mar_finder.rb": [
+      "/Users/hsing-huihsu/Ada-class/Projects/far_mar_finder/lib/far_mar_finder.rb": [
         1,
         1,
         1,
         1,
         1,
         1,
-        null,
-        null,
         null,
         1,
         null,
@@ -42,7 +40,7 @@
         null,
         null
       ],
-      "/Users/hsing-huihsu/Ada-class/Projects-gitrepo/far_mar_finder/lib/market.rb": [
+      "/Users/hsing-huihsu/Ada-class/Projects/far_mar_finder/lib/market.rb": [
         1,
         1,
         null,
@@ -148,7 +146,7 @@
         null,
         null
       ],
-      "/Users/hsing-huihsu/Ada-class/Projects-gitrepo/far_mar_finder/lib/products.rb": [
+      "/Users/hsing-huihsu/Ada-class/Projects/far_mar_finder/lib/products.rb": [
         1,
         1,
         null,
@@ -260,7 +258,7 @@
         null,
         null
       ],
-      "/Users/hsing-huihsu/Ada-class/Projects-gitrepo/far_mar_finder/lib/vendor.rb": [
+      "/Users/hsing-huihsu/Ada-class/Projects/far_mar_finder/lib/vendor.rb": [
         1,
         1,
         null,
@@ -359,24 +357,8 @@
         null,
         null,
         null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
         1,
+        0,
         0,
         0,
         0,
@@ -403,7 +385,7 @@
         null,
         null
       ],
-      "/Users/hsing-huihsu/Ada-class/Projects-gitrepo/far_mar_finder/lib/sale.rb": [
+      "/Users/hsing-huihsu/Ada-class/Projects/far_mar_finder/lib/sale.rb": [
         1,
         1,
         null,
@@ -554,6 +536,6 @@
         null
       ]
     },
-    "timestamp": 1384815687
+    "timestamp": 1390274090
   }
 }

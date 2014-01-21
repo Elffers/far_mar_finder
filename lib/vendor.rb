@@ -98,8 +98,9 @@ class Vendor
 # Returns hash of top n vendors with sales as key and array of vendors as values
   def self.most_items(n)
     top_sales = Sale.sales_by_vendor_id.values.sort.reverse.take(n)
-    vendor_ids = top_sales.map {|sale| Sale.sales_by_vendor_id.key(sale)}
+    vendor_ids = top_sales.find_all {|sale| Sale.sales_by_vendor_id.key(sale)}
     puts top_sales
+    puts vendor_ids.inspect
     vendor_ids.map {|id| Vendor.find(id)}
   end
 

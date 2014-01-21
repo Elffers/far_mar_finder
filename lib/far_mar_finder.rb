@@ -5,8 +5,6 @@ require_relative 'products'
 require_relative 'vendor'
 require_relative 'sale'
 
-
-
 class FarMarFinder
   
   def markets
